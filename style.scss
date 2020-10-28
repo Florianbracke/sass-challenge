@@ -1,31 +1,39 @@
-body {
-  font: 100% "space Mono", monospace;
-  color: #2748b3;
-  margin: 0px;
-  padding: 0px;
-  background-color: #000;
-  background-image: 
-      radial-gradient(#fff, rgba(255, 255, 255, 0.2) 2px, transparent 40px),
+@mixin background-settings {
+  background-image: radial-gradient(#fff, rgba(255, 255, 255, 0.2) 2px, transparent 40px),
       radial-gradient(#fff, rgba(255, 255, 255, 0.15) 1px, transparent 30px),
       radial-gradient(#fff, rgba(255, 255, 255, 0.1) 2px, transparent 40px),
       radial-gradient(rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.1) 2px,
-      transparent 30px);
-    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
-    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
-    background-attachment: fixed;
+    rgba(255, 255, 255, 0.1) 2px, transparent 30px);
+  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+  background-attachment: fixed;
+  background-color: rgb(32, 32, 32);
 }
+
+@mixin box-shadow {
+  -webkit-box-shadow: 10px 10px 19px -4px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: 10px 10px 19px -4px rgba(255, 255, 255, 0.75);
+  box-shadow: 10px 10px 19px -4px rgba(255, 255, 255, 0.75);
+
+
+}
+body {
+  font: 100% "space Mono", monospace;
+  color: #3965f7;
+  margin: 0px;
+  padding: 0px;
+  @include background-settings();
+}
+
 article {
     display: flex;
     flex-wrap: wrap;}
 
     section {
+        @include box-shadow();
         flex-grow: 1;
         flex-basis: 45%;
         border: 1px silver solid;
-        -webkit-box-shadow: 10px 10px 19px -4px rgba(255, 255, 255, 0.75);
-        -moz-box-shadow: 10px 10px 19px -4px rgba(255, 255, 255, 0.75);
-        box-shadow: 10px 10px 19px -4px rgba(255, 255, 255, 0.75);
         padding: 16px;
         margin: 16px;
         clear: both;
@@ -48,7 +56,10 @@ article {
         overflow: auto;
         padding: 16px;
         display: block;
-        white-space: pre-wrap; }
+        white-space: pre-wrap;
+        @include box-shadow(); 
+        
+      }
 
         ::before {
             float: left;
